@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebaseflutternote/style/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,10 +12,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final user = FirebaseAuth.instance.currentUser!;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppStyle.mainColor,
+      
       appBar: AppBar(
         elevation: 0.0,
         title: const Text("AnyWhere Notes"),
@@ -46,6 +50,13 @@ class _HomeScreenState extends State<HomeScreen> {
               }
               return Text("There is nothing yet...", style: GoogleFonts.nunito(color: Colors.white) ,);
             },
+          ),
+          MaterialButton(
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+            },
+            color: Colors.deepOrange[200],
+            child: const Text('SignOut'),
           )
         ],
       ),
