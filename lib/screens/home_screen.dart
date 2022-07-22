@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebaseflutternote/screens/note_editor_screen.dart';
+import 'package:firebaseflutternote/screens/note_creator_screen.dart';
 import 'package:firebaseflutternote/screens/note_reader_screen.dart';
 import 'package:firebaseflutternote/style/app_style.dart';
 import 'package:firebaseflutternote/widgets/note_card.dart';
@@ -27,30 +27,33 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: AppStyle.mainColor,
       
-      appBar: AppBar(
-        elevation: 0.0,
-        title: const Text(
-          "AnyWhere Notes", 
-          style: TextStyle(
-            color: Colors.black87,
-            fontSize: 23,
-            fontWeight: FontWeight.bold,
-          )
-        ),
-        centerTitle: true,
-        backgroundColor: AppStyle.mainColor,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: GestureDetector(
-              onTap: () {FirebaseAuth.instance.signOut();},
-              child: const Icon(
-                Icons.logout,
-                color: Colors.black,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(50.0),
+        child: AppBar(
+          elevation: 5.0,
+          title: const Text(
+            "AnyWhere Notes", 
+            style: TextStyle(
+              color: Colors.black87,
+              fontSize: 23,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          centerTitle: true,
+          backgroundColor: AppStyle.mainColor,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                onTap: () {FirebaseAuth.instance.signOut();},
+                child: const Icon(
+                  Icons.logout,
+                  color: Colors.black,
+                ),
               ),
             ),
-          )
-        ]
+          ],
+        ),
       ),
 
       
@@ -60,21 +63,21 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 10,),
+/*             const SizedBox(height: 10,),
             Text(
               "  Your recent Notes",
               textAlign: TextAlign.left,
               style: GoogleFonts.roboto(
                   color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 20,),
             ),
-            
-            const SizedBox(
+             */
+/*             const SizedBox(
               height: 10.0,
-            ),
+            ), */
 
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
-                stream: FirebaseFirestore.instance.collection("notes").doc(user.uid).collection('userNotes').snapshots(),
+                stream: FirebaseFirestore.instance.collection("users").doc(user.uid).collection('userNotes').snapshots(),
                 builder: (context, AsyncSnapshot<QuerySnapshot> snapshot){
                   if(snapshot.connectionState == ConnectionState.waiting){
                     return const Center(
@@ -83,6 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
                   if(snapshot.hasData){
                     return GridView(
+                      
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2),
                       children: snapshot.data!.docs.map((note) => noteCard(() {
@@ -106,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const NoteEditorScreen()));
+            MaterialPageRoute(builder: (context) => const NoteCreatorScreen()));
         }, 
         label: const Text(
           "Add Note",

@@ -4,23 +4,22 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebaseflutternote/style/app_style.dart';
 import 'package:flutter/material.dart';
 
-class NoteEditorScreen extends StatefulWidget {
-  const NoteEditorScreen({Key? key}) : super(key: key);
+class NoteCreatorScreen extends StatefulWidget {
+  const NoteCreatorScreen({Key? key}) : super(key: key);
 
   @override
-  State<NoteEditorScreen> createState() => _NoteEditorScreenState();
+  State<NoteCreatorScreen> createState() => _NoteCreatorScreenState();
 }
 
-class _NoteEditorScreenState extends State<NoteEditorScreen> {
+class _NoteCreatorScreenState extends State<NoteCreatorScreen> {
   
   // ignore: non_constant_identifier_names
   int color_id = Random().nextInt(AppStyle.cardsColor.length);
-  String date = DateTime.now().toString();
+
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _mainController = TextEditingController();
-  
   final FirebaseAuth auth = FirebaseAuth.instance;
-  
+
   String? getuserID() {
     final User? user = auth.currentUser;
     final uid = user?.uid;
@@ -40,7 +39,7 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
       ),
 
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(24.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -53,10 +52,6 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
               style: AppStyle.mainTitle,
             ),
 
-            const SizedBox(height: 8.0,),
-            Text(date, style: AppStyle.dateTitle),
-            const SizedBox(height: 28.0),
-
             TextField(
               controller: _mainController,
               keyboardType: TextInputType.multiline,
@@ -66,9 +61,8 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
                 hintText: 'Note',
               ),
               style: AppStyle.mainContent,
-            )
-
-          ]
+            ),
+          ],
         ),
       ),
 
@@ -76,12 +70,11 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
         backgroundColor: AppStyle.accentColor,
         onPressed: () async { 
           FirebaseFirestore.instance
-            .collection('notes')
+            .collection('users')
             .doc(getuserID())
             .collection('userNotes')
             .add({
               "note_title" : _titleController.text,
-              "creation_date": date,
               "note_content":_mainController.text,
               "color_id":color_id
             }).then((value) {
