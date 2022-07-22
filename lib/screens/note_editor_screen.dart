@@ -38,6 +38,7 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
         iconTheme: const IconThemeData(color: Colors.black),
         title: const Text("Add a new Note", style: TextStyle( color: Colors.black)),
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -70,6 +71,7 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
           ]
         ),
       ),
+
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppStyle.accentColor,
         onPressed: () async { 
@@ -89,7 +91,10 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
               (error) => print('Failed to add due to $error')
             );
         },
-        child: const Icon(Icons.save),
+        child: const Icon(
+          Icons.save,
+          color: Colors.black,
+          ),
       )
     );
   }

@@ -39,6 +39,18 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         centerTitle: true,
         backgroundColor: AppStyle.mainColor,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: GestureDetector(
+              onTap: () {FirebaseAuth.instance.signOut();},
+              child: const Icon(
+                Icons.logout,
+                color: Colors.black,
+              ),
+            ),
+          )
+        ]
       ),
 
       
@@ -55,6 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
               style: GoogleFonts.roboto(
                   color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 20,),
             ),
+            
             const SizedBox(
               height: 10.0,
             ),
@@ -87,14 +100,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
-
-            MaterialButton(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-              },
-              color: Colors.deepOrange[200],
-              child: const Text('SignOut'),
-            )
           ],
         ),
       ),
@@ -103,8 +108,17 @@ class _HomeScreenState extends State<HomeScreen> {
           Navigator.push(context,
             MaterialPageRoute(builder: (context) => const NoteEditorScreen()));
         }, 
-        label: const Text("Add Note"),
-        icon: const Icon(Icons.add),
+        label: const Text(
+          "Add Note",
+          style: TextStyle (
+            color: Color.fromARGB(221, 0, 0, 0), 
+          ),
+        ),
+        icon: const Icon(
+          Icons.add,
+          color: Colors.black,
+          ),
+        backgroundColor: Colors.amber,
       ),
     );
   }
