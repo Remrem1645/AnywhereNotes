@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebaseflutternote/screens/note_editor_screen.dart';
+import 'package:firebaseflutternote/screens/note_reader_screen.dart';
 import 'package:firebaseflutternote/style/app_style.dart';
 import 'package:firebaseflutternote/widgets/note_card.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +16,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final user = FirebaseAuth.instance.currentUser!;
-  
+
+  String getuserID() {
+    final uid = user.uid;
+    return uid;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
-                stream: FirebaseFirestore.instance.collection("notes").doc("6ytgdeDEYAkv0cyW1fIy").collection('UserNotes').snapshots(),
+                stream: FirebaseFirestore.instance.collection("notes").doc(user.uid).collection('userNotes').snapshots(),
                 builder: (context, AsyncSnapshot<QuerySnapshot> snapshot){
                   if(snapshot.connectionState == ConnectionState.waiting){
                     return const Center(
@@ -65,7 +72,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     return GridView(
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2),
-                      children: snapshot.data!.docs.map((note) => noteCard(() {}, note) ).toList(),
+                      children: snapshot.data!.docs.map((note) => noteCard(() {
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(
+                            builder: (context) => 
+                            NoteReaderScreen(note), 
+                          )
+                        );
+                      }, note) ).toList(),
                     );
                   }
                   return Text("There is nothing yet...", style: GoogleFonts.nunito(color: Colors.black87) ,);
@@ -82,6 +97,14 @@ class _HomeScreenState extends State<HomeScreen> {
             )
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const NoteEditorScreen()));
+        }, 
+        label: const Text("Add Note"),
+        icon: const Icon(Icons.add),
       ),
     );
   }
