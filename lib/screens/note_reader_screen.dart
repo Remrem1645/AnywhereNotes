@@ -14,6 +14,13 @@ class NoteReaderScreen extends StatefulWidget {
 class _NoteReaderScreenState extends State<NoteReaderScreen> {
 
   final FirebaseAuth auth = FirebaseAuth.instance;
+  final GlobalKey<FormState> _formKeyTitle = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKeyContent = GlobalKey<FormState>();
+
+  String noteTitle = '';
+  String noteContent = '';
+  var disableEdit = true;
+
 
   String? getuserID() {
     final User? user = auth.currentUser;
@@ -30,7 +37,18 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
     await collection.doc(widget.doc.id).delete();
   }
 
-
+  Future updateDoc() async{
+    var collection = 
+      FirebaseFirestore.instance
+        .collection('users')
+        .doc(getuserID())
+        .collection('userNotes');
+    await collection.doc(widget.doc.id)
+      .update({
+        "note_title" : noteTitle,
+        "note_content":noteContent,
+      });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +56,6 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
     int color_id = widget.doc['color_id'];
     
     return Scaffold(
-      
       backgroundColor: AppStyle.cardsColor[color_id],
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.black),
@@ -56,7 +73,22 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
                 Icons.delete,
                 color: Colors.black,
               ),
-            ), 
+            ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: GestureDetector(
+              onTap: () {
+                 setState(() {
+                   disableEdit = !disableEdit;
+                 });
+              },
+              child: Icon(
+                Icons.edit,
+                color: (disableEdit) ? Colors.black : Colors.white,
+              ),
+            ),
           ),
         ],
       ),
@@ -66,10 +98,50 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(widget.doc['note_title'], style: AppStyle.mainTitle,),  
-            const SizedBox(height: 18.0,),
-            Text(widget.doc['note_content'], style: AppStyle.mainContent,)
-          ]
+            Form(
+              key: _formKeyTitle,
+              child: TextFormField(
+                initialValue: (noteTitle == '') ? widget.doc['note_title'] : noteTitle,
+                decoration: const InputDecoration(
+                  border: InputBorder.none,
+                ),
+                onSaved: (value) => setState(() => noteTitle = value!),
+                style: AppStyle.mainTitle,
+                readOnly: disableEdit,
+              ),
+            ),
+            Form(
+              key: _formKeyContent,
+              child: TextFormField(
+                initialValue: (noteContent == '') ? widget.doc['note_content'] : noteContent,
+                decoration: const InputDecoration(
+                  border: InputBorder.none,
+                ),
+                onSaved: (value) => setState(() => noteContent = value!),
+                style: AppStyle.mainContent,
+                readOnly: disableEdit,
+              ),
+            ),
+          ],
+        ),  
+      ),
+
+      floatingActionButton: Visibility(
+        visible: !disableEdit,
+        child: FloatingActionButton(
+          backgroundColor: AppStyle.accentColor,
+          onPressed: () { 
+            setState(() {
+              disableEdit = !disableEdit;
+            });
+            _formKeyTitle.currentState?.save();
+            _formKeyContent.currentState?.save();          
+            updateDoc();
+          },
+          child: const Icon(
+            Icons.save,
+            color: Colors.black,
+          ),
         ),
       ),
     );

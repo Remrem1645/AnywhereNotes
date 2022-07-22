@@ -86,9 +86,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
                   if(snapshot.hasData){
                     return GridView(
-                      
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2),
+                        crossAxisCount: 2
+                      ),
                       children: snapshot.data!.docs.map((note) => noteCard(() {
                         Navigator.push(
                           context, 
@@ -107,6 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.push(context,

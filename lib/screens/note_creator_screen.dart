@@ -26,7 +26,6 @@ class _NoteCreatorScreenState extends State<NoteCreatorScreen> {
     return uid;
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,7 +86,7 @@ class _NoteCreatorScreenState extends State<NoteCreatorScreen> {
         child: const Icon(
           Icons.save,
           color: Colors.black,
-          ),
+        ),
       )
     );
   }
