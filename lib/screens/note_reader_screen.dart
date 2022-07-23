@@ -104,6 +104,7 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
                 initialValue: (noteTitle == '') ? widget.doc['note_title'] : noteTitle,
                 decoration: const InputDecoration(
                   border: InputBorder.none,
+                  hintText: 'Title',
                 ),
                 onSaved: (value) => setState(() => noteTitle = value!),
                 style: AppStyle.mainTitle,
@@ -116,6 +117,7 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
                 initialValue: (noteContent == '') ? widget.doc['note_content'] : noteContent,
                 decoration: const InputDecoration(
                   border: InputBorder.none,
+                  hintText: 'Notes',
                 ),
                 onSaved: (value) => setState(() => noteContent = value!),
                 style: AppStyle.mainContent,

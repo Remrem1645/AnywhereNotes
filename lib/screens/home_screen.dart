@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebaseflutternote/screens/note_creator_screen.dart';
 import 'package:firebaseflutternote/screens/note_reader_screen.dart';
 import 'package:firebaseflutternote/style/app_style.dart';
+import 'package:firebaseflutternote/widgets/alert_dialog.dart';
 import 'package:firebaseflutternote/widgets/note_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -45,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Padding(
               padding: const EdgeInsets.only(right: 20.0),
               child: GestureDetector(
-                onTap: () {FirebaseAuth.instance.signOut();},
+                onTap: () {showAlertDialog(context);},
                 child: const Icon(
                   Icons.logout,
                   color: Colors.black,
