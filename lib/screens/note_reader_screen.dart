@@ -109,6 +109,8 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
                 onSaved: (value) => setState(() => noteTitle = value!),
                 style: AppStyle.mainTitle,
                 readOnly: disableEdit,
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
               ),
             ),
             Form(
@@ -122,6 +124,8 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
                 onSaved: (value) => setState(() => noteContent = value!),
                 style: AppStyle.mainContent,
                 readOnly: disableEdit,
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
               ),
             ),
           ],
