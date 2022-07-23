@@ -27,7 +27,7 @@ Widget noteCard(Function()? onTap, QueryDocumentSnapshot doc) {
             overflow: TextOverflow.ellipsis, 
           ),
         ],
-      )
+      ),
     ),
   );
 }
