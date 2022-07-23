@@ -11,14 +11,6 @@ Widget noteCard(Function()? onTap, QueryDocumentSnapshot doc) {
       decoration: BoxDecoration(
         color: AppStyle.cardsColor[doc['color_id']],
         borderRadius: BorderRadius.circular(8.0),
-/*         boxShadow: [
-          BoxShadow(
-            color: AppStyle.cardsColor[doc['color_id']].withOpacity(0.5),
-              spreadRadius: 1,  
-              blurRadius: 3,
-              offset: const Offset(0, 3),
-          ),
-        ], */
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

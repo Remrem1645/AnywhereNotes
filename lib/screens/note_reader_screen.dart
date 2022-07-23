@@ -56,6 +56,7 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
     int color_id = widget.doc['color_id'];
     
     return Scaffold(
+      //Page style, Edit and Del buttons
       backgroundColor: AppStyle.cardsColor[color_id],
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.black),
@@ -93,6 +94,7 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
         ],
       ),
 
+      //Reader and Editor
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -132,6 +134,7 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
         ),  
       ),
 
+      //Save Button
       floatingActionButton: Visibility(
         visible: !disableEdit,
         child: FloatingActionButton(

@@ -29,6 +29,7 @@ class _NoteCreatorScreenState extends State<NoteCreatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //Page Style
       backgroundColor: AppStyle.cardsColor[color_id],
       appBar: AppBar(
         backgroundColor: AppStyle.cardsColor[color_id],
@@ -37,6 +38,7 @@ class _NoteCreatorScreenState extends State<NoteCreatorScreen> {
         title: const Text("Add a new Note", style: TextStyle( color: Colors.black)),
       ),
 
+      //Title and notes
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
@@ -65,6 +67,7 @@ class _NoteCreatorScreenState extends State<NoteCreatorScreen> {
         ),
       ),
 
+      //Adds data into Firebase Database
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppStyle.accentColor,
         onPressed: () async { 
@@ -87,7 +90,7 @@ class _NoteCreatorScreenState extends State<NoteCreatorScreen> {
           Icons.save,
           color: Colors.black,
         ),
-      )
+      ),
     );
   }
 }

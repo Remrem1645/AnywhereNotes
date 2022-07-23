@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: AppStyle.mainColor,
       
+      //Title and logout
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50.0),
         child: AppBar(
@@ -56,26 +57,14 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-
       
+      //Notepads
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-/*             const SizedBox(height: 10,),
-            Text(
-              "  Your recent Notes",
-              textAlign: TextAlign.left,
-              style: GoogleFonts.roboto(
-                  color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 20,),
-            ),
-             */
-/*             const SizedBox(
-              height: 10.0,
-            ), */
-
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance.collection("users").doc(user.uid).collection('userNotes').snapshots(),
@@ -109,6 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
 
+      //Create new button
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.push(context,
