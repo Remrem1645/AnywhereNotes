@@ -16,13 +16,18 @@
     <img title = "" src="https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white">
 </div>
 
-<div>
-    <p align = "center"> 
+<div align = "center">
+    <p> 
         <b>Currently Working on Andriod</b>
     </p>
-    <p align = "center">
+    <p>
        User authentication is being handled by Firebase Authentication. User data is being handled by Firebase Database. The program is created with Flutter framework and coded on the .Dart language.
     </p>
+    <p>
+        Some in app screenshots
+    </p>
+    <img title = "" src="https://i.imgur.com/0O7A8c9.jpg" width="360" height="780" >
+    <img title = "" src="https://i.imgur.com/n7Afuio.jpg" width="360" height="780" >
 </div>
 
 
