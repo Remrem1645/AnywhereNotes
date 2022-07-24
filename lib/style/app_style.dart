@@ -6,6 +6,7 @@ class AppStyle{
   static Color mainColor =  const Color(0xFFE0E0E0);
   static Color accentColor =  const Color(0xFFFFC000);
   static Color bgColor =  const Color(0xFFe2e2ff);
+  static Color textColor = const Color.fromARGB(255, 0, 0, 0);
 
   //Cards
   static List<Color> cardsColor = [

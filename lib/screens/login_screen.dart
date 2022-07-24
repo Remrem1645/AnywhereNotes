@@ -112,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Container(
                     padding: const EdgeInsets.all(15),
                     decoration: BoxDecoration(
-                      color: Colors.amber[400],
+                      color: AppStyle.accentColor,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: const Center(

@@ -3,8 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebaseflutternote/screens/note_creator_screen.dart';
 import 'package:firebaseflutternote/screens/note_reader_screen.dart';
 import 'package:firebaseflutternote/style/app_style.dart';
-import 'package:firebaseflutternote/widgets/alert_dialog.dart';
 import 'package:firebaseflutternote/widgets/note_card.dart';
+import 'package:firebaseflutternote/widgets/side_bar_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -23,38 +23,32 @@ class _HomeScreenState extends State<HomeScreen> {
     return uid;
   }
 
+  var currentScreen = "Home_Screen";
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppStyle.mainColor,
-      
+
+      drawer: NavDrawer( currScreen: currentScreen,),
+
       //Title and logout
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50.0),
         child: AppBar(
+          iconTheme: IconThemeData(color: AppStyle.textColor),
           elevation: 5.0,
-          title: const Text(
-            "AnyWhere Notes", 
+          title: Text(
+            "Notes", 
             style: TextStyle(
-              color: Colors.black87,
+              color: AppStyle.textColor,
               fontSize: 23,
               fontWeight: FontWeight.bold,
             ),
           ),
           centerTitle: true,
           backgroundColor: AppStyle.mainColor,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: GestureDetector(
-                onTap: () {showAlertDialog(context);},
-                child: const Icon(
-                  Icons.logout,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ],
         ),
       ),
       
@@ -90,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       }, note) ).toList(),
                     );
                   }
-                  return Text("There is nothing yet...", style: GoogleFonts.nunito(color: Colors.black87) ,);
+                  return Text("There is nothing yet...", style: GoogleFonts.nunito(color: AppStyle.textColor) ,);
                 },
               ),
             ),
@@ -104,17 +98,17 @@ class _HomeScreenState extends State<HomeScreen> {
           Navigator.push(context,
             MaterialPageRoute(builder: (context) => const NoteCreatorScreen()));
         }, 
-        label: const Text(
+        label: Text(
           "Add Note",
           style: TextStyle (
-            color: Color.fromARGB(221, 0, 0, 0), 
+            color: AppStyle.textColor, 
           ),
         ),
-        icon: const Icon(
+        icon: Icon(
           Icons.add,
-          color: Colors.black,
+          color: AppStyle.textColor,
           ),
-        backgroundColor: Colors.amber,
+        backgroundColor: AppStyle.accentColor,
       ),
     );
   }

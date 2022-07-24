@@ -59,7 +59,7 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
       //Page style, Edit and Del buttons
       backgroundColor: AppStyle.cardsColor[color_id],
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.black),
+        iconTheme: IconThemeData(color: AppStyle.textColor),
         backgroundColor: AppStyle.cardsColor[color_id],
         elevation: 0.0,
         actions: [
@@ -70,9 +70,9 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
                 removeDoc();
                 Navigator.pop(context);
               },
-              child: const Icon(
+              child: Icon(
                 Icons.delete,
-                color: Colors.black,
+                color: AppStyle.textColor,
               ),
             ),
           ),
@@ -87,7 +87,7 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
               },
               child: Icon(
                 Icons.edit,
-                color: (disableEdit) ? Colors.black : Colors.white,
+                color: (disableEdit) ? Colors.black : Colors.black38,
               ),
             ),
           ),
@@ -147,9 +147,9 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
             _formKeyContent.currentState?.save();          
             updateDoc();
           },
-          child: const Icon(
+          child: Icon(
             Icons.save,
-            color: Colors.black,
+            color: AppStyle.textColor,
           ),
         ),
       ),

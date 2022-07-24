@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebaseflutternote/screens/login_screen.dart';
+import 'package:firebaseflutternote/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 
 showAlertDialog(BuildContext context) {
@@ -18,7 +20,7 @@ showAlertDialog(BuildContext context) {
     ),
     onPressed:  () {
       FirebaseAuth.instance.signOut();
-      Navigator.of(context).pop();
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MainPage()));
     },
   );
 

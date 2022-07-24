@@ -34,8 +34,8 @@ class _NoteCreatorScreenState extends State<NoteCreatorScreen> {
       appBar: AppBar(
         backgroundColor: AppStyle.cardsColor[color_id],
         elevation: 0.0,
-        iconTheme: const IconThemeData(color: Colors.black),
-        title: const Text("Add a new Note", style: TextStyle( color: Colors.black)),
+        iconTheme: IconThemeData(color: AppStyle.textColor),
+        title: Text("Add a new Note", style: TextStyle( color: AppStyle.textColor)),
       ),
 
       //Title and notes
@@ -86,9 +86,9 @@ class _NoteCreatorScreenState extends State<NoteCreatorScreen> {
               (error) => print('Failed to add due to $error')
             );
         },
-        child: const Icon(
+        child: Icon(
           Icons.save,
-          color: Colors.black,
+          color: AppStyle.textColor,
         ),
       ),
     );
