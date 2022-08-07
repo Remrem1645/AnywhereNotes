@@ -21,7 +21,7 @@ class NavDrawer extends StatelessWidget{
             // ignore: sort_child_properties_last
             child: const Text(
               'AnyWhere Notes',
-              style: TextStyle(color: Colors.white, fontSize: 25),
+              style: TextStyle(fontSize: 25),
             ),
             decoration: BoxDecoration(
                 color: AppStyle.accentColor,

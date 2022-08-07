@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebaseflutternote/style/app_style.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class NoteCreatorScreen extends StatefulWidget {
   const NoteCreatorScreen({Key? key}) : super(key: key);
@@ -46,22 +47,24 @@ class _NoteCreatorScreenState extends State<NoteCreatorScreen> {
           children: [
             TextField(
               controller: _titleController,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: 'Note Title',
+                hintStyle: GoogleFonts.roboto(fontSize: 19.0, fontWeight: FontWeight.normal, color: Colors.black),
               ),
-              style: AppStyle.mainTitle,
+              style: GoogleFonts.roboto(fontSize: 19.0, fontWeight: FontWeight.normal, color: Colors.black),
             ),
 
             TextField(
               controller: _mainController,
               keyboardType: TextInputType.multiline,
               maxLines: null,
-              decoration: const InputDecoration( 
+              decoration: InputDecoration( 
                 border: InputBorder.none,
                 hintText: 'Note',
+                hintStyle: GoogleFonts.nunito(fontSize: 16.0, fontWeight: FontWeight.normal, color: Colors.black),
               ),
-              style: AppStyle.mainContent,
+              style: GoogleFonts.nunito(fontSize: 16.0, fontWeight: FontWeight.normal, color: Colors.black),
             ),
           ],
         ),

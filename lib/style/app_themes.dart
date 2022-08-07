@@ -25,6 +25,7 @@ class MyThemes {
     scaffoldBackgroundColor: Colors.grey.shade900,
     primaryColor: Colors.amber,
     secondaryHeaderColor: Colors.black,
+    cardColor: Colors.white,
     colorScheme: const ColorScheme.dark(),
 
   );
@@ -33,6 +34,7 @@ class MyThemes {
     scaffoldBackgroundColor: Colors.white,
     primaryColor: Colors.amber,
     secondaryHeaderColor: Colors.white,
+    cardColor: Colors.black,
     colorScheme: const ColorScheme.light(),
 
   );
