@@ -31,10 +31,12 @@ class _SettingScreenState extends State<SettingScreen> {
 
       appBar: AppBar(
         iconTheme: IconThemeData(color:  AppStyle.textColor),
-        title: const Text(
+        backgroundColor: Theme.of(context).primaryColor,
+        title: Text(
           "Settings",
           style: TextStyle(
             fontSize: 23,
+            color: Theme.of(context).secondaryHeaderColor
           ),
         ),
         centerTitle: true,
@@ -43,7 +45,7 @@ class _SettingScreenState extends State<SettingScreen> {
       body: SettingsList(
         sections: [
           SettingsSection(
-            title: const Text('Common', style: TextStyle(),),
+            title: Text('Common', style: TextStyle(color: Theme.of(context).primaryColor),),
             tiles: [
               SettingsTile.switchTile(
                 title: const Text('Dark Mode'),

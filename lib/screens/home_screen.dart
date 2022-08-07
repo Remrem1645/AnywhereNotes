@@ -42,11 +42,13 @@ class _HomeScreenState extends State<HomeScreen> {
         child: AppBar(
           iconTheme: IconThemeData(color: AppStyle.textColor),
           elevation: 5.0,
-          title: const Text(
+          backgroundColor: Theme.of(context).primaryColor,
+          title: Text(
             "Notes", 
             style: TextStyle(
               fontSize: 23,
               fontWeight: FontWeight.bold,
+              color: Theme.of(context).secondaryHeaderColor
             ),
           ),
           centerTitle: true,

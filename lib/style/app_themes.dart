@@ -23,12 +23,16 @@ class ThemeProvider extends ChangeNotifier {
 class MyThemes {
   static final darkTheme = ThemeData(
     scaffoldBackgroundColor: Colors.grey.shade900,
+    primaryColor: Colors.amber,
+    secondaryHeaderColor: Colors.black,
     colorScheme: const ColorScheme.dark(),
 
   );
 
   static final lightTheme = ThemeData(
     scaffoldBackgroundColor: Colors.white,
+    primaryColor: Colors.amber,
+    secondaryHeaderColor: Colors.white,
     colorScheme: const ColorScheme.light(),
 
   );

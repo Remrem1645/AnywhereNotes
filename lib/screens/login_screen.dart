@@ -41,7 +41,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppStyle.mainColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -64,16 +63,15 @@ class _LoginPageState extends State<LoginPage> {
                   controller: _emailController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white),
+                      borderSide: const BorderSide(),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.amber),
+                      borderSide: const BorderSide(),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     contentPadding: const EdgeInsets.only(left: 20.0),
                     hintText: 'Email',
-                    fillColor: Colors.grey[200],
                     filled: true,
                   ),
                 ),
@@ -88,16 +86,15 @@ class _LoginPageState extends State<LoginPage> {
                   controller: _passwordController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white),
+                      borderSide: const BorderSide(),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.amber),
+                      borderSide: const BorderSide(),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     contentPadding: const EdgeInsets.only(left: 20.0),
                     hintText: 'Password',
-                    fillColor: Colors.grey[200],
                     filled: true,
                   ),
                   obscureText: true
@@ -121,7 +118,6 @@ class _LoginPageState extends State<LoginPage> {
                       child: Text(
                         'Sign In',
                         style: TextStyle(
-                          color: Colors.black87,
                           fontWeight: FontWeight.bold,
                           fontSize: 15,
                         ),
