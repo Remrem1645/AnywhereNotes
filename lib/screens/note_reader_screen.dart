@@ -50,6 +50,8 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
       });
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     // ignore: non_constant_identifier_names

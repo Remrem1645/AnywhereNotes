@@ -1,7 +1,9 @@
 import 'package:firebaseflutternote/style/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
+import 'package:provider/provider.dart';
 
+import '../style/app_themes.dart';
 import '../widgets/side_bar_menu.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -22,20 +24,17 @@ class _SettingScreenState extends State<SettingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppStyle.mainColor,
+    final themeProvider = Provider.of<ThemeProvider>(context);
 
+    return Scaffold(
       drawer: NavDrawer( currScreen: currentScreen,),
 
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.black),
-        backgroundColor: AppStyle.mainColor,
+        iconTheme: IconThemeData(color:  AppStyle.textColor),
         title: const Text(
           "Settings",
           style: TextStyle(
-            color: Colors.black87,
             fontSize: 23,
-            fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
@@ -44,17 +43,16 @@ class _SettingScreenState extends State<SettingScreen> {
       body: SettingsList(
         sections: [
           SettingsSection(
-            title: Text('Common', style: TextStyle(color: AppStyle.textColor ),),
+            title: const Text('Common', style: TextStyle(),),
             tiles: [
               SettingsTile.switchTile(
                 title: const Text('Dark Mode'),
                 leading: const Icon(Icons.phone_android),
-                initialValue: darkmode,
+                initialValue: themeProvider.isDarkMode,
                 onToggle: (value) {
-                  setState(() {
-                    darkmodeToggle();
-                });
-                }, 
+                  final provider = Provider.of<ThemeProvider>(context, listen: false);
+                  provider.toggleTheme(value);
+                }
               ),
             ],
           ),

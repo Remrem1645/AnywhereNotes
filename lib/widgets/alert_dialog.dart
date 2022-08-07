@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebaseflutternote/screens/login_screen.dart';
 import 'package:firebaseflutternote/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 

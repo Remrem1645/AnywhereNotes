@@ -25,11 +25,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   var currentScreen = "Home_Screen";
 
-
   @override
   Widget build(BuildContext context) {
+
+    final textcolor = MediaQuery.of(context).platformBrightness == Brightness.dark
+      ? 'DarkTheme'
+      : 'LightTheme';
+
     return Scaffold(
-      backgroundColor: AppStyle.mainColor,
 
       drawer: NavDrawer( currScreen: currentScreen,),
 
@@ -39,16 +42,14 @@ class _HomeScreenState extends State<HomeScreen> {
         child: AppBar(
           iconTheme: IconThemeData(color: AppStyle.textColor),
           elevation: 5.0,
-          title: Text(
+          title: const Text(
             "Notes", 
             style: TextStyle(
-              color: AppStyle.textColor,
               fontSize: 23,
               fontWeight: FontWeight.bold,
             ),
           ),
           centerTitle: true,
-          backgroundColor: AppStyle.mainColor,
         ),
       ),
       
@@ -107,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
         icon: Icon(
           Icons.add,
           color: AppStyle.textColor,
-          ),
+        ),
         backgroundColor: AppStyle.accentColor,
       ),
     );
