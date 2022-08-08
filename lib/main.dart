@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
     WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +16,8 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
+//flutter build apk --build-name=1.12 --build-number=1
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -25,13 +26,13 @@ class MyApp extends StatelessWidget {
         create: (context) => ThemeProvider(),
         builder: (context, _) {
           final themeProvider = Provider.of<ThemeProvider>(context);
-
+          SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
           return MaterialApp(
             themeMode: themeProvider.themeMode,
             theme: MyThemes.lightTheme,
             darkTheme: MyThemes.darkTheme,
             debugShowCheckedModeBanner: false,
-            home: MainPage(),
+            home: const MainPage(),
           );
         },
       );

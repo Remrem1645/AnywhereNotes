@@ -12,13 +12,11 @@ class RegisterPage extends StatefulWidget {
     required this.showLoginPage,
   }) : super(key: key);
 
-
   @override
   State<RegisterPage> createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmpasswordController = TextEditingController();

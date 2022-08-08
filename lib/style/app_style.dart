@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppStyle{
-
   final FirebaseAuth auth = FirebaseAuth.instance;
 
   String? getuserID() {
@@ -12,7 +11,6 @@ class AppStyle{
     final uid = user?.uid;
     return uid;
   }
-
 
   //App Colors
   static Color mainColor = const Color(0xFFE0E0E0);

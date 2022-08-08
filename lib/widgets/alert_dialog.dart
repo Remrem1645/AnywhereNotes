@@ -17,7 +17,7 @@ showAlertDialog(BuildContext context) {
       padding: EdgeInsets.only(right: 10.0),
       child: Text("Continue"),
     ),
-    onPressed:  () {
+    onPressed: () {
       FirebaseAuth.instance.signOut();
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MainPage()));
     },

@@ -27,7 +27,6 @@ class MyThemes {
     secondaryHeaderColor: Colors.black,
     cardColor: Colors.white,
     colorScheme: const ColorScheme.dark(),
-
   );
 
   static final lightTheme = ThemeData(
@@ -36,6 +35,5 @@ class MyThemes {
     secondaryHeaderColor: Colors.white,
     cardColor: Colors.black,
     colorScheme: const ColorScheme.light(),
-
   );
 }

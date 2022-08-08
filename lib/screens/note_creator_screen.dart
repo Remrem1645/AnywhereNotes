@@ -13,7 +13,6 @@ class NoteCreatorScreen extends StatefulWidget {
 }
 
 class _NoteCreatorScreenState extends State<NoteCreatorScreen> {
-  
   // ignore: non_constant_identifier_names
   int color_id = Random().nextInt(AppStyle.cardsColor.length);
 

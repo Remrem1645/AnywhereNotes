@@ -12,7 +12,6 @@ class NoteReaderScreen extends StatefulWidget {
 }
 
 class _NoteReaderScreenState extends State<NoteReaderScreen> {
-
   final FirebaseAuth auth = FirebaseAuth.instance;
   final GlobalKey<FormState> _formKeyTitle = GlobalKey<FormState>();
   final GlobalKey<FormState> _formKeyContent = GlobalKey<FormState>();
@@ -20,7 +19,6 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
   String noteTitle = '';
   String noteContent = '';
   var disableEdit = true;
-
 
   String? getuserID() {
     final User? user = auth.currentUser;
@@ -49,8 +47,6 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
         "note_content":noteContent,
       });
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
