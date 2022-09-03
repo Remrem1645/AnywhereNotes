@@ -43,6 +43,7 @@ class _NoteCreatorScreenState extends State<NoteCreatorScreen> {
         padding: const EdgeInsets.all(24.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             TextField(
               controller: _titleController,

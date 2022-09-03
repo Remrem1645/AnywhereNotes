@@ -62,7 +62,7 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
         elevation: 0.0,
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 20.0),
+            padding: const EdgeInsets.only(right: 15.0),
             child: GestureDetector(
               onTap: () { 
                 removeDoc();
@@ -119,7 +119,7 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
                 initialValue: (noteContent == '') ? widget.doc['note_content'] : noteContent,
                 decoration: const InputDecoration(
                   border: InputBorder.none,
-                  hintText: 'Notes',
+                  hintText: 'There is nothing written down..',
                 ),
                 onSaved: (value) => setState(() => noteContent = value!),
                 style: AppStyle.mainContent,

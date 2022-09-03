@@ -84,7 +84,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             NoteReaderScreen(note), 
                           )
                         );
-                      }, note) ).toList(),
+                      }, 
+                      note)).toList(),
                     );
                   }
                   return Text("There is nothing yet...", style: GoogleFonts.nunito(color: AppStyle.textColor) ,);
