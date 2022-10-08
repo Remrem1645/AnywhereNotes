@@ -15,26 +15,21 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+
 class _HomeScreenState extends State<HomeScreen> {
   final user = FirebaseAuth.instance.currentUser!;
+  var currentScreen = "Home_Screen";
 
   String getuserID() {
     final uid = user.uid;
     return uid;
   }
 
-  var currentScreen = "Home_Screen";
-
   @override
   Widget build(BuildContext context) {
-
-    final textcolor = MediaQuery.of(context).platformBrightness == Brightness.dark
-      ? 'DarkTheme'
-      : 'LightTheme';
-
     return Scaffold(
 
-      drawer: NavDrawer( currScreen: currentScreen,),
+      drawer: NavDrawer(currScreen: currentScreen,),
 
       //Title and logout
       appBar: PreferredSize(
@@ -74,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   if(snapshot.hasData){
                     return GridView(
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2
+                        crossAxisCount: 2,
                       ),
                       children: snapshot.data!.docs.map((note) => noteCard(() {
                         Navigator.push(
@@ -84,8 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             NoteReaderScreen(note), 
                           )
                         );
-                      }, 
-                      note)).toList(),
+                      }, note)).toList(),
                     );
                   }
                   return Text("There is nothing yet...", style: GoogleFonts.nunito(color: AppStyle.textColor) ,);

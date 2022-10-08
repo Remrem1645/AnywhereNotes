@@ -19,6 +19,8 @@ class _NoteCreatorScreenState extends State<NoteCreatorScreen> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _mainController = TextEditingController();
   final FirebaseAuth auth = FirebaseAuth.instance;
+  String dropdownValue = '1';
+
 
   String? getuserID() {
     final User? user = auth.currentUser;
@@ -66,6 +68,31 @@ class _NoteCreatorScreenState extends State<NoteCreatorScreen> {
               ),
               style: GoogleFonts.nunito(fontSize: 16.0, fontWeight: FontWeight.normal, color: Colors.black),
             ),
+
+            DropdownButton<String>(
+              value: 'One',
+              icon: const Icon(Icons.arrow_downward),
+              iconSize: 24,
+              elevation: 16,
+              style: const TextStyle(color: Colors.deepPurple),
+              underline: Container(
+                height: 2,
+                color: Colors.deepPurpleAccent,
+              ),
+              onChanged: (String? newValue) {
+                setState(() {
+                  dropdownValue = newValue!;
+                });
+              },
+              items: <String>['One', 'Two', 'Free', 'Four']
+                  .map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            )
+
           ],
         ),
       ),

@@ -62,7 +62,7 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
         elevation: 0.0,
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 15.0),
+            padding: const EdgeInsets.only(right: 14.0),
             child: GestureDetector(
               onTap: () { 
                 removeDoc();
@@ -93,8 +93,8 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
       ),
 
       //Reader and Editor
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.fromLTRB(23, 0, 0, 5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

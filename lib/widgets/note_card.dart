@@ -23,7 +23,7 @@ Widget noteCard(Function()? onTap, QueryDocumentSnapshot doc) {
           ),  
           const SizedBox(height: 5.0,),
           Text(doc['note_content'], 
-            style: GoogleFonts.nunito(color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.bold),
+            style: GoogleFonts.nunito(color: Colors.black, fontSize: 16.0,),
             maxLines: 4, 
             overflow: TextOverflow.ellipsis, 
           ),
